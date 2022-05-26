@@ -5,6 +5,8 @@ let divUsuarios = $("#divUsuarios");
 let formEnviar = $("#formEnviar");
 let txtMensaje = $("#txtMensaje");
 let divChatbox = $("#divChatbox");
+let chatName = $("#chatName");
+
 
 let user = params.get('nombre');
 let sala = params.get('sala');
@@ -35,6 +37,8 @@ function scrollBottom() {
 function renderizarUsuarios( personas ){
 
     console.log( personas );
+    
+    chatName.html( sala );
 
     let html =`<li>
                     <a href="javascript:void(0)" class="active"> Chat de <span> ${sala}</span></a>
@@ -99,8 +103,8 @@ function renderisarMensajes( mensaje, yo = false)
     let fecha = new Date(mensaje.fecha);
     let hora = fecha.getHours() + ":" + fecha.getMinutes();
 
-    let adminClass =  mensaje.nombre === "Administrador" ? 'danger' : 'info';
-    let img = mensaje.nombre === "Administrador" ? '' : '<div class="chat-img"><img src="assets/images/users/1.jpg" alt="user" /></div>';
+    let adminClass =  mensaje.nombre === "Server" ? 'danger' : 'info';
+    let img = mensaje.nombre === "Server" ? '' : '<div class="chat-img"><img src="assets/images/users/1.jpg" alt="user" /></div>';
     if(!yo){
         chatRow = ` <li class = "animated fadeIn">
                             ${img}
